@@ -5,7 +5,7 @@ import Header from "../Header";
 export default function Layout({ children }: PropsWithChildren) {
     return (
 
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full relative">
             <Header />
             {children}
             <Footer />

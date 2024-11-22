@@ -21,6 +21,9 @@ export type Character = {
   "name": string,
   "imageUrl": string,
   "url": string,
+  "sourceUrl": string,
+  "createdAt": string,
+  "updatedAt": string,
 }
 
 const fetchData = async (search: string): Promise<FilterResult> => {
@@ -32,7 +35,8 @@ export default function SearchBar({ onSearchResults }: { onSearchResults: (searc
   const [search, setSearch] = useState('');
   const query = useQuery({
     queryKey: ['search', search],
-    queryFn: () => fetchData(search)
+    queryFn: () => fetchData(search),
+    enabled: !!search
   });
 
   useEffect(() => {

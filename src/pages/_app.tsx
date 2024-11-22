@@ -19,7 +19,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={client}>
       <SearchProvider >
-        <main className={`${lato.variable} font-sans`}>
+        <main className={`${lato.variable} font-sans relative h-full`}>
           <Layout>
             <Component {...pageProps} />
           </Layout>
