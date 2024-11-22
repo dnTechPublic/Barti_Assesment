@@ -1,7 +1,8 @@
-import { Character } from "@/components/SearchBar";
 import Image from "next/image";
 import { LinkButton } from "@/components/LinkButton";
 import { useRouter } from "next/router";
+import { Character } from "@/types/character";
+
 export default function CharacterCard({ character }: { character: Character }) {
 
     const router = useRouter();

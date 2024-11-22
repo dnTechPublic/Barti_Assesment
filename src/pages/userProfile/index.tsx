@@ -2,7 +2,7 @@ import { useAccount } from "@/hooks/Account/AccountContext"
 import { ActionButton } from "@/components/ActionButton";
 import { useState } from "react";
 import UserProfileForm from "@/components/UserProfileForm";
-import { User } from "@/types/User";
+import { User } from "@/types/user";
 
 
 const calculateAge = (birthDate: Date) => {
