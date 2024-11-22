@@ -7,7 +7,7 @@ import { disneyLocations } from '@/types/disneyLocations';
 import { disneylandRides } from '@/types/disneyLandRides';
 import { ActionButton } from '../ActionButton';
 import { SecondaryButton } from '../SecondaryButton';
-import { User } from '@/types/User';
+import { User } from '@/types/user';
 
 export type UserProfileFormProps = {
     onSubmit: (data: User) => void;

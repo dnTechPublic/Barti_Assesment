@@ -1,6 +1,6 @@
 import CharacterCard from "../CharacterCard";
 import { useQueries } from "@tanstack/react-query";
-import { FilterResult } from "../SearchBar";
+import { FilterResult } from "@/types/filterResult";
 import { Character } from "@/types/character";
 
 const fetchDefaultCharacter = async (id: number): Promise<FilterResult> => {

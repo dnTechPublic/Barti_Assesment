@@ -1,7 +1,7 @@
 import CharacterCard from "../CharacterCard";
 import { useQueries } from "@tanstack/react-query";
-import { FilterResult } from "../SearchBar";
 import { Character } from "@/types/character";
+import { FilterResult } from "@/types/filterResult";
 
 const fetchFeatureCharacter = async (id: number): Promise<FilterResult> => {
     const response = await fetch(`https://api.disneyapi.dev/character/${(id)}`);

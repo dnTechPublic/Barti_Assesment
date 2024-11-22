@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import { useQuery } from '@tanstack/react-query';
-import { FilterResult, Character } from "@/components/SearchBar";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ActionButton } from "@/components/ActionButton";
 import Featured from "@/components/Featured";
+import { Character } from "@/types/character";
+import { FilterResult } from "@/types/filterResult";
+
 const fetchData = async (id: string): Promise<FilterResult> => {
     const response = await fetch(`https://api.disneyapi.dev/character/${(id)}`);
     return response.json();
@@ -30,6 +32,8 @@ export default function Profile() {
     }, [query])
 
     if (!character) return null;
+
+    if (query.isLoading) return <p>Loading...</p>;
 
     return (
         <div className="flex flex-col bg-[#F1F2F3] h-full pt-[60px] mx-[100px] text-[#222222]">

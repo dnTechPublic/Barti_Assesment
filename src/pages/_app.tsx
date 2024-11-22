@@ -13,6 +13,11 @@ const lato = Lato({
   display: 'swap',
 });
 
+export const metadata = {
+  title: 'Disney Character Search',
+  description: 'Technical Assessment for Barti'
+}
+
 export default function App({ Component, pageProps }: AppProps) {
 
   const client = new QueryClient();

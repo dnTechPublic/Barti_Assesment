@@ -1,6 +1,6 @@
 import React, { createContext, useContext, ReactNode, useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-import { User } from '@/types/User';
+import { User } from '@/types/user';
 
 type AccountContext = {
   currentUser: User | null;
@@ -10,12 +10,17 @@ type AccountContext = {
 const AccountContext = createContext<AccountContext | undefined>(undefined);
 
 export function AccountProvider({ children }: { children: ReactNode }) {
-  const [cookies, setCookie] = useCookies(['user']);
+  const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const [currentUser, setCurrentUser] = useState<User | null>(cookies.user)
 
   useEffect(() => {
-    setCookie('user', JSON.stringify(currentUser));
-  }, [currentUser, setCookie]);
+    if (currentUser) {
+      setCookie('user', JSON.stringify(currentUser), { sameSite: 'strict' });
+    }
+    else {
+      removeCookie('user');
+    }
+  }, [currentUser, setCookie, removeCookie]);
 
   return (
     <AccountContext.Provider value={{ currentUser, setCurrentUser }}>
