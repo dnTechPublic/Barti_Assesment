@@ -15,7 +15,7 @@ export default function Header() {
         <header className="flex items-center bg-white h-28 px-[120px] py-[32px] gap-[40px]">
             <Image src={headerLogo} alt="Header Logo" />
             <SearchBar onSearchResults={(searchResults) => setSearchResults(searchResults)} />
-            <Account onClick={() => {router.push('/userPofile')}} />
+            <Account onClick={() => {router.push('/userProfile')}} />
         </header>
     );
 };

@@ -1,26 +1,24 @@
-import React, { createContext, useContext, ReactNode, useState } from 'react';
+import React, { createContext, useContext, ReactNode, useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
+import { User } from '@/types/User';
 
-type User = {
-   name: string;
-    age: number;
-    location: string;
-    favoriteDisneyCharater: string;
-    favoriteDisneyMovie: string;
-    favoriteDisneyLand: string
-}
-
-export type AccountContext = {
+type AccountContext = {
   currentUser: User | null;
   setCurrentUser: (user: User | null) => void;
 }
 
 const AccountContext = createContext<AccountContext | undefined>(undefined);
 
-export function SearchProvider({ children }: { children: ReactNode }) {
-  const [currentUser, setCurrentUser] = useState<User | null>(null)
+export function AccountProvider({ children }: { children: ReactNode }) {
+  const [cookies, setCookie] = useCookies(['user']);
+  const [currentUser, setCurrentUser] = useState<User | null>(cookies.user)
+
+  useEffect(() => {
+    setCookie('user', JSON.stringify(currentUser));
+  }, [currentUser, setCookie]);
 
   return (
-    <AccountContext.Provider value={{ currentUser: currentUser, setCurrentUser: setCurrentUser }}>
+    <AccountContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}
     </AccountContext.Provider>
   );
